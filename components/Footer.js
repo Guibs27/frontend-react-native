@@ -3,16 +3,20 @@ import { View, Text, StyleSheet } from 'react-native'
 export default function Footer() {
     return (
         <View style={styles.footer}>
-            <Text>Footer OK</Text>
+            <Text style={styles.copy}>Copyright © 2024 Guilherme Byz</Text>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
     footer: {
-        flex: 2,
+        padding: 25,
+        // flex: 2,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#5361f5',
+        // backgroundColor: '#965f3c',
+      },
+      copy: {
+        color: '#bababa'
       }
 })

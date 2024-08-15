@@ -1,25 +1,51 @@
 import { View, Text, StyleSheet } from 'react-native'
+import { Image } from 'expo-image'
+import Feather from '@expo/vector-icons/Feather';
 
 export default function Header() {
     return (
         <View style={styles.header}>
-            <Text style={styles.title}>Header OK</Text>
+            <View style={styles.user}>
+                <Image 
+                    style={styles.avatar}
+                    source="https://avatars.githubusercontent.com/u/145155960?s=400&u=5c9ece5fe9cabb80b24e29009a8daa627b41e76e&v=4"
+                    // source={require('caminho_arquivo')}
+                />
+                <Text style={styles.name}>Guilherme Byz</Text>
+            </View>
+            <Feather style={styles.menu} name="menu" size={24} />
         </View>
     )
 }
 
 const styles = StyleSheet.create({
     header: {
-        flex: 1,
+        // flex: 1,
+        padding: 15,
         alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: '#fa5350'
-    },
-
-    title: {
+        justifyContent: 'space-between',
         flexDirection: 'row',
-        fontSize: 20,
-        color: "black",
-        padding: 10
-      }
+        paddingHorizontal: 15,
+        backgroundColor: '#1c1c1c'
+    },
+    user: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: 10
+    },
+    avatar: {
+        width: 55,
+        height: 55,
+        borderRadius: 30
+    },
+    name: {
+        fontWeight: '600',
+        fontSize: 18,
+        color: 'white',
+        fontWeight: 370
+    },
+    menu: {
+        padding: 10,
+        color: '#ffffff'
+    }
 })
