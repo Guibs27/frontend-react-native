@@ -28,8 +28,8 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     logo: {
-        height: 75,
-        width: 75
+        height: 80,
+        width: 80
     },
     content: {
         gap: 8
