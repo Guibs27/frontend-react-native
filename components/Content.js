@@ -5,21 +5,21 @@ export default function Content() {
 
     const accounts = [
         {
-            id: 1,
+            id: 0,
             service: 'Gmail',
             imgUrl: 'https://static.vecteezy.com/system/resources/previews/022/484/516/original/google-mail-gmail-icon-logo-symbol-free-png.png',
             userName: 'gbizerradesouza@gmail.com'
         },
         {
-            id: 2,
+            id: 1,
             service: 'Instagram',
-            imgUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/2048px-Instagram_logo_2016.svg.png',
+            imgUrl: 'https://static.vecteezy.com/system/resources/thumbnails/038/447/961/small/ai-generated-instagram-logo-free-png.png',
             userName: 'guibs01@gmail.com'
         },
         {
-            id: 3,
+            id: 2,
             service: 'GitHub',
-            imgUrl: 'https://www.logo.wine/a/logo/GitHub/GitHub-Logo.wine.svg',
+            imgUrl: 'https://www.svgrepo.com/show/447137/github-fill.svg',
             userName: 'g.bizerra@aluno.ifsp.edu.br'
         }
 
