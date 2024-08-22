@@ -1,16 +1,16 @@
 import { View, Text, StyleSheet } from 'react-native'
 import { Image } from 'expo-image'
 
-export default function CardAccount() {
+export default function CardAccount({ service, userName, imgUrl }) {
     return (
         <View style={styles.card}>
             <Image 
                 style={styles.logo}
-                source="https://static.vecteezy.com/system/resources/previews/022/484/516/original/google-mail-gmail-icon-logo-symbol-free-png.png"
+                source={imgUrl}
             />
             <View style={styles.content}>
-                <Text style={styles.service}>Gmail</Text>
-                <Text style={styles.username}>gbizerradesouza@gmail.com</Text>
+                <Text style={styles.service}>{service}</Text>
+                <Text style={styles.username}>{userName}</Text>
             </View>
         </View>
     )

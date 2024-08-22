@@ -12,10 +12,20 @@ export default function Content() {
             Estou sempre aberto a novas oportunidades e colaborações. Vamos transformar ideias em realidade juntos!</Text>
             <br />
 
-            <CardAccount />
-            <CardAccount />
-            <CardAccount />
-            <CardAccount />
+            <CardAccount
+                service='Gmail'
+                imgUrl='https://static.vecteezy.com/system/resources/previews/022/484/516/original/google-mail-gmail-icon-logo-symbol-free-png.png'
+                userName='gbizerradesouza@gmail.com'/>
+
+            <CardAccount 
+                service='Instagram'
+                imgUrl='https://cdn-icons-png.flaticon.com/256/3621/3621435.png'
+                userName='guibs01@gmail.com' />
+
+            <CardAccount
+                service='GitHub'
+                imgUrl='https://www.logo.wine/a/logo/GitHub/GitHub-Logo.wine.svg'
+                userName='g.bizerra@aluno.ifsp.edu.br' />
         </View>
 
     )
