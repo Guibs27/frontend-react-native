@@ -99,7 +99,8 @@ export default function Content() {
         </Pressable>
       </View>
 
-      <Text>Olá! Eu sou o Guilherme, um técnico em informática e
+      <Text style={styles.intro}>
+        Olá! Eu sou o Guilherme, um técnico em informática e
         estudante do Instituto Federal de São Paulo (IFSP). Com
         uma sólida experiência em desenvolvimento de software,
         estou sempre em busca de novos desafios que me permitam
@@ -114,8 +115,9 @@ export default function Content() {
         jogar e ouvir músicas de diversos gêneros.
         <br /><br />
         Estou sempre aberto a novas oportunidades e colaborações.
-        Vamos transformar ideias em realidade juntos!</Text>
-        <br />
+        Vamos transformar ideias em realidade juntos!
+      </Text>
+      <br />
 
       {accounts.length === 0 && <Text>Loading...</Text>}
 
@@ -158,9 +160,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginVertical: 10,
     paddingVertical: 6,
-    borderRadius: 15
+    borderRadius: 20
   }],
   buttonText: {
     color: '#fff'
+  },
+  intro: {
+    backgroundColor: '#fafafa',
+    padding: 8,
+    borderRadius: 6,
+    // borderWidth: 1,
+    // borderColor: '#e0e0e0'
   }
 })

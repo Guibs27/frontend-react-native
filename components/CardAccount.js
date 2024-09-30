@@ -36,8 +36,8 @@ export default function CardAccount({ id, service, userName, imgUrl, accounts, s
       </View>
 
     <View style={styles.buttons}>
-      <Pressable onPress={null}><Feather style={styles.delete} name="edit" size={24} /></Pressable>
-      <Pressable onPress={handleDelete}><Feather style={styles.delete} name="trash" size={24} /></Pressable>
+      <Pressable style={styles.icons} onPress={null}><Feather name="edit" size={24} /></Pressable>
+      <Pressable style={styles.icons} onPress={handleDelete}><Feather name="trash-2" size={24} /></Pressable>
     </View>
       
     </View>
@@ -78,12 +78,12 @@ const styles = StyleSheet.create({
     alignItems: 'flex-end',
     flexDirection: 'row'
   },
-  delete: {
-    backgroundColor: '#f7f7f7',
+  icons: ({ pressed }) => [{
+    backgroundColor: pressed ? '#c2c2c2' : '#f7f7f7',
     borderRadius: 50,
     borderWidth: 1,
     borderColor: '#e0e0e0',
     padding: 10,
     marginRight: 10
-  }
-}) 
+  }] 
+})
