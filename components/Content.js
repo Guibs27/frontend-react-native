@@ -51,12 +51,32 @@ export default function Content() {
     return
   }
 
-
-
   return (
     <View style={styles.content}>
+      
+      <Text style={styles.intro}>
+        Olá! Meu nome é Guilherme, sou um técnico de informática e
+        estudante do Instituto Federal de São Paulo (IFSP). Com
+        uma sólida experiência em desenvolvimento de software,
+        estou sempre em busca de novos desafios que me permitam
+        combinar inovação com eficiência. Ao longo da minha trajetória,
+        desenvolvi habilidades em diversas áreas, incluindo programação,
+        design e gestão de projetos, o que me permite ter uma visão
+        holística em cada projeto que realizo.
+        <br /><br />
+        Além da tecnologia, sou movido pela curiosidade e pelo desejo
+        constante de aprender e crescer, tanto pessoal quanto
+        profissionalmente. Também tenho outros hobbies, como ler,
+        jogar e ouvir músicas de diversas.
+        <br /><br />
+        Estou sempre aberto a novas oportunidades e colaborações.
+        Vamos transformar ideias em realidade juntos!
+        <br /><br />
+        (Texto feito com o auxílio do ChatGPT)
+      </Text>
+      <br />
 
-      <View>
+      <View style={styles.insert}>
         <Text>Serviço: </Text>
         <TextInput
           style={styles.input}
@@ -99,26 +119,6 @@ export default function Content() {
         </Pressable>
       </View>
 
-      <Text style={styles.intro}>
-        Olá! Eu sou o Guilherme, um técnico em informática e
-        estudante do Instituto Federal de São Paulo (IFSP). Com
-        uma sólida experiência em desenvolvimento de software,
-        estou sempre em busca de novos desafios que me permitam
-        combinar inovação com eficiência. Ao longo da minha trajetória,
-        desenvolvi habilidades em diversas áreas, incluindo programação,
-        design e gestão de projetos, o que me permite ter uma visão
-        holística em cada projeto que realizo.
-        <br /><br />
-        Além da tecnologia, sou movido pela curiosidade e pelo desejo
-        constante de aprender e crescer, tanto pessoal quanto
-        profissionalmente. Também tenho outros hobbies, como a ler,
-        jogar e ouvir músicas de diversos gêneros.
-        <br /><br />
-        Estou sempre aberto a novas oportunidades e colaborações.
-        Vamos transformar ideias em realidade juntos!
-      </Text>
-      <br />
-
       {accounts.length === 0 && <Text>Loading...</Text>}
 
       {
@@ -154,6 +154,9 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     borderColor: '#a1a1a1'
   },
+  insert: {
+    marginBottom: 25
+  },
   button: ({ pressed }) => [{
     backgroundColor: pressed ? '#d97400' : '#f97f01',
     color: '#fff',
@@ -168,6 +171,8 @@ const styles = StyleSheet.create({
   intro: {
     backgroundColor: '#fafafa',
     padding: 8,
+    paddingBottom: 16,
+    paddingTop: 16,
     borderRadius: 6,
     // borderWidth: 1,
     // borderColor: '#e0e0e0'
