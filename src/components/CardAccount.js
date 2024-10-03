@@ -2,7 +2,7 @@ import { View, Text, StyleSheet, Pressable } from 'react-native'
 import { Image } from 'expo-image'
 import { Feather } from '@expo/vector-icons'
 
-export default function CardAccount({ id, service, userName, imgUrl, accounts, setAccounts }) {
+export default function CardAccount({ id, service, userName, imgUrl,pass, accounts, setAccounts }) {
 
   const handleDelete = async () => {
     const response = await fetch(`http://localhost:3000/account/${id}`, {
