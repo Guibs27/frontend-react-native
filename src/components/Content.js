@@ -1,12 +1,10 @@
 import { useEffect, useState } from 'react'
 import { View, StyleSheet, Text } from 'react-native'
 import CardAccount from './CardAccount'
-import Button from './Button'
-import { useNavigation } from 'expo-router'
+import { useLocalSearchParams } from 'expo-router'
 
 export default function Content() {
   const [accounts, setAccounts] = useState([])
-  const navigation = useNavigation()
 
   useEffect(() => {
     const getAccounts = async () => {
@@ -27,7 +25,6 @@ export default function Content() {
 
   return (
     <View style={styles.content}>
-
       <Text style={styles.intro}>
         Olá! Meu nome é Guilherme, sou um técnico de informática e
         estudante do Instituto Federal de São Paulo (IFSP). Com
@@ -50,7 +47,6 @@ export default function Content() {
       </Text>
 
       {accounts.length === 0 && <Text>Loading...</Text>}
-      <Button onPress={() => navigation.navigate('signup')}>+ Novo Serviço</Button>
 
       {
         accounts.map((account) =>
@@ -60,6 +56,7 @@ export default function Content() {
             service={account.service}
             imgUrl={account.logo_image}
             userName={account.username}
+            pass={account.pass}
             accounts={accounts}
             setAccounts={setAccounts}
           />
@@ -76,10 +73,10 @@ const styles = StyleSheet.create({
   },
   intro: {
     backgroundColor: '#fafafa',
+    borderRadius: 6,
     padding: 8,
     paddingBottom: 16,
     paddingTop: 16,
-    borderRadius: 6,
-    // marginBottom: 16
+    marginBottom: 5
   }
 })

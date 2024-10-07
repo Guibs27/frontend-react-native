@@ -1,6 +1,7 @@
 import { View, Text, StyleSheet } from 'react-native'
 import { Image } from 'expo-image'
 import Feather from '@expo/vector-icons/Feather';
+import { Link } from 'expo-router'
 
 export default function Header() {
   return (
@@ -13,7 +14,9 @@ export default function Header() {
         />
         <Text style={styles.name}>Guilherme Byz</Text>
       </View>
-      <Feather style={styles.menu} name="plus" size={26} />
+      <Link href="signup">
+        <Feather style={styles.menu} name="plus" size={26} color="white" />
+      </Link>
     </View>
   )
 }

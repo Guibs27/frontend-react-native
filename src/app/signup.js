@@ -13,11 +13,11 @@ export default function Signup() {
 
   const handleCreateAccount = async () => {
     const account = {
-        service: txtServico,
-        username: txtUsername,
-        logo_image: txtImgUrl,
-        pass: txtPass,
-        user_id: 1
+      service: txtServico,
+      username: txtUsername,
+      logo_image: txtImgUrl,
+      pass: txtPass,
+      user_id: 1
     }
 
     const response = await fetch('http://localhost:3000/account', {
@@ -28,16 +28,16 @@ export default function Signup() {
       body: JSON.stringify(account)
     })
 
-    if(response.ok){
-        const data = await response.json()
-        console.log(data)
-        navigation.navigate('index')
-        return
+    if (response.ok) {
+      const data = await response.json()
+      console.log(data)
+      navigation.navigate('index')
+      return
     }
 
     console.log('Erro ao carregar accounts')
     return
-}
+  }
 
   return (
     <View style={styles.content}>

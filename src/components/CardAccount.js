@@ -1,8 +1,10 @@
 import { View, Text, StyleSheet, Pressable } from 'react-native'
 import { Image } from 'expo-image'
 import { Feather } from '@expo/vector-icons'
+import { useNavigation } from 'expo-router'
 
-export default function CardAccount({ id, service, userName, imgUrl,pass, accounts, setAccounts }) {
+export default function CardAccount({ id, service, userName, imgUrl, pass, accounts, setAccounts }) {
+  const navigation = useNavigation()
 
   const handleDelete = async () => {
     const response = await fetch(`http://localhost:3000/account/${id}`, {
@@ -25,21 +27,23 @@ export default function CardAccount({ id, service, userName, imgUrl,pass, accoun
   return (
     <View style={styles.card}>
       <View style={styles.info}>
-        <Image
-        style={styles.logo}
-        source={imgUrl}
-        />
+        <Pressable onPress={() => navigation.navigate('showPass', { imgUrl, pass, service, userName })}>
+          <Image
+            style={styles.logo}
+            source={imgUrl}
+          />
+        </Pressable>
         <View style={styles.content}>
           <Text style={styles.service}>{service}</Text>
           <Text style={styles.username}>{userName}</Text>
         </View>
       </View>
 
-    <View style={styles.buttons}>
-      <Pressable style={styles.icons} onPress={null}><Feather name="edit" size={24} /></Pressable>
-      <Pressable style={styles.icons} onPress={handleDelete}><Feather name="trash-2" size={24} /></Pressable>
-    </View>
-      
+      <View style={styles.buttons}>
+        <Pressable style={styles.icons} onPress={null}><Feather name="edit" size={24} /></Pressable>
+        <Pressable style={styles.icons} onPress={handleDelete}><Feather name="trash-2" size={24} /></Pressable>
+      </View>
+
     </View>
   )
 }
@@ -85,5 +89,5 @@ const styles = StyleSheet.create({
     borderColor: '#e0e0e0',
     padding: 10,
     marginRight: 10
-  }] 
+  }]
 })
