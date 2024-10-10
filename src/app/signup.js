@@ -1,15 +1,17 @@
 import { View, StyleSheet, Text, TextInput } from 'react-native'
+import { useAccountStore } from '../stores/useAccountStore'
+import { useRouter } from 'expo-router'
 import { useState } from "react"
-import { useNavigation } from 'expo-router'
 import Button from '../components/Button'
 
 export default function Signup() {
+  const { addAccount } = useAccountStore()
+  const router = useRouter()
+
   const [txtServico, setTxtServico] = useState('')
   const [txtUsername, setTxtUsername] = useState('')
   const [txtPass, setTxtPass] = useState('')
   const [txtImgUrl, setTxtImgUrl] = useState('')
-
-  const navigation = useNavigation()
 
   const handleCreateAccount = async () => {
     const account = {
@@ -30,8 +32,8 @@ export default function Signup() {
 
     if (response.ok) {
       const data = await response.json()
-      console.log(data)
-      navigation.navigate('index')
+      addAccount(data.account)
+      router.back()
       return
     }
 
@@ -46,26 +48,32 @@ export default function Signup() {
         style={styles.input}
         onChangeText={setTxtServico}
         value={txtServico}
-        placeholder='Digite o nome do serviço...'
-        placeholderTextColor='#DDDDDD'
+        placeholder='...'
+        placeholderTextColor='#c4c4c4'
       />
       <Text>Username:</Text>
       <TextInput
         style={styles.input}
         onChangeText={setTxtUsername}
         value={txtUsername}
+        placeholder='...'
+        placeholderTextColor='#c4c4c4'
       />
       <Text>Password:</Text>
       <TextInput
         style={styles.input}
         onChangeText={setTxtPass}
         value={txtPass}
+        placeholder='...'
+        placeholderTextColor='#c4c4c4'
       />
       <Text>Logo URL:</Text>
       <TextInput
         style={styles.input}
         onChangeText={setTxtImgUrl}
         value={txtImgUrl}
+        placeholder='...'
+        placeholderTextColor='#c4c4c4'
         keyboardType='url'
       />
       <Button onPress={handleCreateAccount}>Cadastrar</Button>

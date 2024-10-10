@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react'
-import { View, StyleSheet, Text } from 'react-native'
+import {View, StyleSheet, Text} from 'react-native'
+import { useEffect } from 'react'
 import CardAccount from './CardAccount'
-import { useLocalSearchParams } from 'expo-router'
+import { useAccountStore } from '../stores/useAccountStore'
 
 export default function Content() {
-  const [accounts, setAccounts] = useState([])
+  const { accounts, setAccounts } = useAccountStore()
 
   useEffect(() => {
     const getAccounts = async () => {
@@ -21,7 +21,6 @@ export default function Content() {
 
     getAccounts()
   }, [])
-
 
   return (
     <View style={styles.content}>
