@@ -49,7 +49,7 @@ export default function Signup() {
         onChangeText={setTxtServico}
         value={txtServico}
         placeholder='...'
-        placeholderTextColor='#c4c4c4'
+        placeholderTextColor='#b8b8b8'
       />
       <Text>Username:</Text>
       <TextInput
@@ -57,7 +57,7 @@ export default function Signup() {
         onChangeText={setTxtUsername}
         value={txtUsername}
         placeholder='...'
-        placeholderTextColor='#c4c4c4'
+        placeholderTextColor='#b8b8b8'
       />
       <Text>Password:</Text>
       <TextInput
@@ -65,7 +65,7 @@ export default function Signup() {
         onChangeText={setTxtPass}
         value={txtPass}
         placeholder='...'
-        placeholderTextColor='#c4c4c4'
+        placeholderTextColor='#b8b8b8'
       />
       <Text>Logo URL:</Text>
       <TextInput
@@ -73,7 +73,7 @@ export default function Signup() {
         onChangeText={setTxtImgUrl}
         value={txtImgUrl}
         placeholder='...'
-        placeholderTextColor='#c4c4c4'
+        placeholderTextColor='#b8b8b8'
         keyboardType='url'
       />
       <Button onPress={handleCreateAccount}>Cadastrar</Button>
@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     paddingVertical: 6,
     marginVertical: 5,
-    borderRadius: 5,
+    borderRadius: 8,
     borderColor: '#8a8a8a'
   }
 })
