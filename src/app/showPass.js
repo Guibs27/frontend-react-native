@@ -4,6 +4,7 @@ import { Feather } from '@expo/vector-icons'
 import { Image } from 'expo-image'
 import { useAccountStore } from '../stores/useAccountStore'
 import Button from '../components/Button'
+import * as Clipboard from 'expo-clipboard'
 
 export default function ShowPass() {
   const router = useRouter()
@@ -28,6 +29,11 @@ export default function ShowPass() {
     }
     console.log('Erro ao carregar accounts')
     return
+  }
+
+  const copyToClipboard = () => {
+    Clipboard.setStringAsync(account?.pass || '')
+    alert('Senha copiada!')
   }
 
   return (
@@ -57,7 +63,7 @@ export default function ShowPass() {
       <View>
         <TextInput style={styles.input} value={account?.pass || ''} />
       </View>
-      <Button>Copiar Senha</Button>
+      <Button onPress={copyToClipboard}>Copiar senha</Button>
     </View>
   )
 }
