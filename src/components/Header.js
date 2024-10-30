@@ -15,7 +15,7 @@ export default function Header() {
         <Text style={styles.name}>Guilherme Byz</Text>
       </View>
       <Link href="signup">
-        <Feather style={styles.menu} name="plus" size={26} color="white" />
+        <Feather style={styles.menu} name="plus" size={28} color="white" />
       </Link>
     </View>
   )

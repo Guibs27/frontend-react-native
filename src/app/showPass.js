@@ -44,7 +44,7 @@ export default function ShowPass() {
         </View>
 
         <View style={styles.buttons}>
-          <Pressable style={styles.icons} onPress={null}>
+          <Pressable style={styles.icons} onPress={() => router.push({ pathname: '/update', params: { id } })}>
             <Feather name="edit" size={24} />
           </Pressable>
 
@@ -57,6 +57,7 @@ export default function ShowPass() {
       <View>
         <TextInput style={styles.input} value={account?.pass || ''} />
       </View>
+      <Button>Copiar Senha</Button>
     </View>
   )
 }
