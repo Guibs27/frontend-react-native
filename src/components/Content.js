@@ -1,4 +1,4 @@
-import {View, StyleSheet, Text} from 'react-native'
+import { View, StyleSheet, Text } from 'react-native'
 import { useEffect } from 'react'
 import { useAccountStore } from '../stores/useAccountStore'
 import CardAccount from './CardAccount'
