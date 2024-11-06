@@ -1,80 +1,83 @@
-import { View, StyleSheet, Text, TextInput } from 'react-native'
-import { useAccountStore } from '../stores/useAccountStore'
-import { useRouter } from 'expo-router'
+import { View, StyleSheet, Text, TextInput, Alert } from 'react-native'
 import { useState } from "react"
+import { useRouter } from 'expo-router'
 import Button from '../components/Button'
 
-export default function Signup() {
-  const { addAccount } = useAccountStore()
+export default function SignUp() {
   const router = useRouter()
 
-  const [txtServico, setTxtServico] = useState('')
-  const [txtUsername, setTxtUsername] = useState('')
+  const [txtName, setTxtName] = useState('')
+  const [txtEmail, setTxtEmail] = useState('')
+  const [txtAvatar, setTxtAvatar] = useState('')
   const [txtPass, setTxtPass] = useState('')
-  const [txtImgUrl, setTxtImgUrl] = useState('')
 
   const handleCreateAccount = async () => {
-    const account = {
-      service: txtServico,
-      username: txtUsername,
-      logo_image: txtImgUrl,
+    const user = {
+      name: txtName,
+      email: txtEmail,
+      avatar: txtAvatar,
       pass: txtPass,
-      user_id: 1
     }
 
-    const response = await fetch('http://localhost:3000/account', {
+    const response = await fetch('http://localhost:3000/auth/signup', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(account)
+      body: JSON.stringify(user)
     })
 
     if (response.ok) {
       const data = await response.json()
-      addAccount(data.account)
+      Alert.alert('Usuário Criado com Sucesso!')
+      setTxtName('')
+      setTxtEmail('')
+      setTxtAvatar('')
+      setTxtPass('')
       router.back()
-      return
+    } else {
+      const data = await response.json()
+      Alert.alert('Erro ao Criar Usuário')
+      console.log(data?.error)
     }
-
-    console.log('Erro ao carregar accounts')
     return
   }
 
   return (
     <View style={styles.content}>
-      <Text>Serviço:</Text>
+      <Text>Name:</Text>
       <TextInput
         style={styles.input}
-        onChangeText={setTxtServico}
-        value={txtServico}
+        onChangeText={setTxtName}
+        value={txtName}
         placeholder='...'
         placeholderTextColor='#b8b8b8'
       />
-      <Text>Username:</Text>
+      <Text>Email:</Text>
       <TextInput
         style={styles.input}
-        onChangeText={setTxtUsername}
-        value={txtUsername}
+        onChangeText={setTxtEmail}
+        value={txtEmail}
         placeholder='...'
         placeholderTextColor='#b8b8b8'
       />
-      <Text>Password:</Text>
+      <Text>Avatar URL:</Text>
+      <TextInput
+        style={styles.input}
+        onChangeText={setTxtAvatar}
+        value={txtAvatar}
+        keyboardType='url'
+        placeholder='...'
+        placeholderTextColor='#b8b8b8'
+      />
+      <Text>Senha:</Text>
       <TextInput
         style={styles.input}
         onChangeText={setTxtPass}
         value={txtPass}
+        secureTextEntry={true}
         placeholder='...'
         placeholderTextColor='#b8b8b8'
-      />
-      <Text>Logo URL:</Text>
-      <TextInput
-        style={styles.input}
-        onChangeText={setTxtImgUrl}
-        value={txtImgUrl}
-        placeholder='...'
-        placeholderTextColor='#b8b8b8'
-        keyboardType='url'
       />
       <Button onPress={handleCreateAccount}>Cadastrar</Button>
     </View>

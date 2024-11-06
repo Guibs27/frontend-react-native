@@ -16,11 +16,13 @@ const styles = StyleSheet.create({
     backgroundColor: pressed ? '#d97400' : '#f97f01',
     color: '#fff',
     alignItems: 'center',
-    marginVertical: 10,
-    paddingVertical: 6,
+    marginVertical: 15,
+    padding: 8,
+    paddingHorizontal: 30,
     borderRadius: 20
   }],
   buttonText: {
-    color: '#fff'
+    color: '#fff',
+    fontSize: 15
   }
 })
