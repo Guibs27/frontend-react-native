@@ -1,8 +1,9 @@
 import { View, StyleSheet, Text, TextInput } from 'react-native'
 import { useState } from "react"
-import Button from '../components/Button'
 import { useRouter } from 'expo-router'
 import { useAccountStore } from '../stores/useAccountStore'
+import Button from '../components/Button'
+import { inputStyle } from '../components/InputText'
 
 export default function CreateAccount() {
   const { addAccount } = useAccountStore()
@@ -45,30 +46,36 @@ export default function CreateAccount() {
     <View style={styles.container}>
       <Text>Serviço:</Text>
       <TextInput
-        style={styles.input}
+        style={inputStyle.input}
         onChangeText={setTxtServico}
         value={txtServico}
-        placeholder='Digite o nome do serviço...'
-        placeholderTextColor='#DDDDDD'
+        placeholder='...'
+        placeholderTextColor='#b8b8b8'
       />
       <Text>Username:</Text>
       <TextInput
-        style={styles.input}
+        style={inputStyle.input}
         onChangeText={setTxtUsername}
         value={txtUsername}
+        placeholder='...'
+        placeholderTextColor='#b8b8b8'
       />
       <Text>Password:</Text>
       <TextInput
-        style={styles.input}
+        style={inputStyle.input}
         onChangeText={setTxtPass}
         value={txtPass}
+        placeholder='...'
+        placeholderTextColor='#b8b8b8'
       />
       <Text>Logo URL:</Text>
       <TextInput
-        style={styles.input}
+        style={inputStyle.input}
         onChangeText={setTxtImgUrl}
         value={txtImgUrl}
         keyboardType='url'
+        placeholder='...'
+        placeholderTextColor='#b8b8b8'
       />
       <Button onPress={handleCreateAccount}>Cadastrar</Button>
     </View>
@@ -78,14 +85,5 @@ export default function CreateAccount() {
 const styles = StyleSheet.create({
   container: {
     padding: 20
-  },
-  input: {
-    borderWidth: 1,
-    borderStyle: 'solid',
-    borderColor: '#444444',
-    paddingHorizontal: 10,
-    paddingVertical: 6,
-    marginVertical: 5,
-    borderRadius: 5
   }
 })

@@ -1,7 +1,8 @@
-import { View, Text, StyleSheet } from 'react-native'
-import Button from './Button'
-import { useLoginStore } from '../stores/useLoginStore'
+import { View, Text, StyleSheet, Alert } from 'react-native'
 import { useRouter } from 'expo-router'
+import { useLoginStore } from '../stores/useLoginStore'
+import { deleteObjectData } from '../utils/asyncStorage'
+import Button from './Button'
 
 export default function Footer() {
   const { logout: logoutStore, accessToken } = useLoginStore()
@@ -24,7 +25,8 @@ export default function Footer() {
       const data = await response.json()
       console.log(data)
       logoutStore()
-      router.push('/login')
+      await deleteObjectData('userLogged')
+      router.replace('/login')
     } else {
       const data = await response.json()
       Alert.alert('Erro ao logar')

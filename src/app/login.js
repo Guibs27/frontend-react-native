@@ -1,8 +1,10 @@
 import { ScrollView, StyleSheet, View, Text, TextInput, Alert } from 'react-native'
-import Button from '../components/Button'
 import { useRouter } from 'expo-router'
 import { useState } from 'react'
 import { useLoginStore } from '../stores/useLoginStore'
+import { storeObjectData } from '../utils/asyncStorage'
+import Button from '../components/Button'
+import { inputStyle } from '../components/InputText'
 
 export default function Login() {
   const [txtEmail, setTxtEmail] = useState('')
@@ -28,6 +30,7 @@ export default function Login() {
       const data = await response.json()
       console.log(data)
       loginStore({ accessToken: data?.accessToken, ...data.user })
+      await storeObjectData('userLogged', { accessToken: data?.accessToken, ...data.user })
       router.push('/home')
     } else {
       const data = await response.json()
@@ -43,13 +46,13 @@ export default function Login() {
 
         <Text>Email:</Text>
         <TextInput
-          style={styles.input}
+          style={inputStyle.input}
           onChangeText={setTxtEmail}
           value={txtEmail}
         />
         <Text style={{ marginTop: 10 }}>Senha:</Text>
         <TextInput
-          style={styles.input}
+          style={inputStyle.input}
           onChangeText={setTxtPass}
           value={txtPass}
           secureTextEntry={true}
@@ -67,16 +70,6 @@ export default function Login() {
 const styles = StyleSheet.create({
   container: {
     flex: 1
-  },
-  input: {
-    borderWidth: 1,
-    borderStyle: 'solid',
-    borderColor: '#e3e3e3',
-    paddingHorizontal: 10,
-    paddingVertical: 6,
-    marginVertical: 5,
-    borderRadius: 8,
-    borderColor: '#8a8a8a'
   },
   divisor: {
     borderBottomColor: '#CCC',

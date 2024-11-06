@@ -1,8 +1,9 @@
 import { View, StyleSheet, Text, TextInput } from 'react-native'
 import { useState } from "react"
-import Button from '../components/Button'
 import { useRouter, useLocalSearchParams } from 'expo-router'
 import { useAccountStore } from '../stores/useAccountStore'
+import Button from '../components/Button'
+import { inputStyle } from '../components/InputText'
 
 export default function Update() {
   const { accounts, updateAccount } = useAccountStore()
@@ -48,7 +49,7 @@ export default function Update() {
     <View style={styles.container}>
       <Text>Serviço:</Text>
       <TextInput
-        style={styles.input}
+        style={inputStyle.input}
         onChangeText={setTxtServico}
         value={txtServico}
         placeholder='...'
@@ -56,7 +57,7 @@ export default function Update() {
       />
       <Text>Username:</Text>
       <TextInput
-        style={styles.input}
+        style={inputStyle.input}
         onChangeText={setTxtUsername}
         value={txtUsername}
         placeholder='...'
@@ -64,7 +65,7 @@ export default function Update() {
       />
       <Text>Password:</Text>
       <TextInput
-        style={styles.input}
+        style={inputStyle.input}
         onChangeText={setTxtPass}
         value={txtPass}
         placeholder='...'
@@ -72,7 +73,7 @@ export default function Update() {
       />
       <Text>Logo URL:</Text>
       <TextInput
-        style={styles.input}
+        style={inputStyle.input}
         onChangeText={setTxtImgUrl}
         value={txtImgUrl}
         placeholder='...'
@@ -87,14 +88,5 @@ export default function Update() {
 const styles = StyleSheet.create({
   container: {
     padding: 20
-  },
-  input: {
-    borderWidth: 1,
-    borderStyle: 'solid',
-    borderColor: '#444444',
-    paddingHorizontal: 10,
-    paddingVertical: 6,
-    marginVertical: 5,
-    borderRadius: 5
   }
 })

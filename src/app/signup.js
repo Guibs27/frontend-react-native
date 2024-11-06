@@ -2,6 +2,7 @@ import { View, StyleSheet, Text, TextInput, Alert } from 'react-native'
 import { useState } from "react"
 import { useRouter } from 'expo-router'
 import Button from '../components/Button'
+import { inputStyle } from '../components/InputText'
 
 export default function SignUp() {
   const router = useRouter()
@@ -45,9 +46,9 @@ export default function SignUp() {
 
   return (
     <View style={styles.content}>
-      <Text>Name:</Text>
+      <Text>Nome:</Text>
       <TextInput
-        style={styles.input}
+        style={inputStyle.input}
         onChangeText={setTxtName}
         value={txtName}
         placeholder='...'
@@ -55,7 +56,7 @@ export default function SignUp() {
       />
       <Text>Email:</Text>
       <TextInput
-        style={styles.input}
+        style={inputStyle.input}
         onChangeText={setTxtEmail}
         value={txtEmail}
         placeholder='...'
@@ -63,7 +64,7 @@ export default function SignUp() {
       />
       <Text>Avatar URL:</Text>
       <TextInput
-        style={styles.input}
+        style={inputStyle.input}
         onChangeText={setTxtAvatar}
         value={txtAvatar}
         keyboardType='url'
@@ -72,7 +73,7 @@ export default function SignUp() {
       />
       <Text>Senha:</Text>
       <TextInput
-        style={styles.input}
+        style={inputStyle.input}
         onChangeText={setTxtPass}
         value={txtPass}
         secureTextEntry={true}
@@ -87,15 +88,5 @@ export default function SignUp() {
 const styles = StyleSheet.create({
   content: {
     padding: 15
-  },
-  input: {
-    borderWidth: 1,
-    borderStyle: 'solid',
-    borderColor: '#e3e3e3',
-    paddingHorizontal: 10,
-    paddingVertical: 6,
-    marginVertical: 5,
-    borderRadius: 8,
-    borderColor: '#8a8a8a'
   }
 })
