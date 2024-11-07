@@ -2,9 +2,11 @@ import { View, StyleSheet, Text, TextInput, Pressable } from 'react-native'
 import { useLocalSearchParams, useRouter } from 'expo-router'
 import { Feather } from '@expo/vector-icons'
 import { Image } from 'expo-image'
+import { fetchAuth } from '../utils/fetchAuth'
 import { useAccountStore } from '../stores/useAccountStore'
-import Button from '../components/Button'
+import { inputStyle } from '../components/InputText'
 import * as Clipboard from 'expo-clipboard'
+import Button from '../components/Button'
 
 export default function ShowPass() {
   const router = useRouter()
@@ -14,11 +16,8 @@ export default function ShowPass() {
   const account = accounts.find((item) => item.id === +id)
 
   const handleDelete = async () => {
-    const response = await fetch(`http://localhost:3000/account/${id}`, {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json'
-      }
+    const response = await fetchAuth(`http://localhost:3000/account/${id}`, {
+      method: 'DELETE'
     })
     if (response.ok) {
       const data = await response.json()
@@ -61,7 +60,7 @@ export default function ShowPass() {
       </View>
 
       <View>
-        <TextInput style={styles.input} value={account?.pass || ''} />
+        <TextInput style={inputStyle.input} value={account?.pass || ''} />
       </View>
       <Button onPress={copyToClipboard}>Copiar senha</Button>
     </View>
@@ -89,16 +88,6 @@ const styles = StyleSheet.create({
   },
   username: {
     color: '#777777'
-  },
-  input: {
-    borderWidth: 1,
-    borderStyle: 'solid',
-    borderColor: '#e3e3e3',
-    paddingHorizontal: 10,
-    paddingVertical: 6,
-    marginVertical: 5,
-    borderRadius: 10,
-    borderColor: '#8a8a8a'
   },
   buttons: {
     flexDirection: 'row',

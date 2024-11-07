@@ -2,7 +2,6 @@ import { View, Text, StyleSheet, Pressable } from 'react-native'
 import { Image } from 'expo-image'
 import { Feather } from '@expo/vector-icons'
 import { useRouter } from 'expo-router'
-import { useAccountStore } from '../stores/useAccountStore.js';
 
 export default function CardAccount({ id, service, userName, imgUrl }) {
   const router = useRouter()
@@ -10,7 +9,7 @@ export default function CardAccount({ id, service, userName, imgUrl }) {
   return (
     <View style={styles.card}>
       <View style={styles.info}>
-        <Pressable onPress={() => router.push({ pathname: '/showPass', params: { id } })}>
+        <Pressable onPress={() => router.push({ pathname: '/show-pass', params: { id } })}>
           <Image
             style={styles.logo}
             source={imgUrl}

@@ -1,40 +1,36 @@
 import { View, StyleSheet, Text, TextInput } from 'react-native'
 import { useState } from "react"
-import { useRouter, useLocalSearchParams } from 'expo-router'
-import { useAccountStore } from '../stores/useAccountStore'
-import { fetchAuth } from '../utils/fetchAuth'
-import { inputStyle } from '../components/InputText'
-import Button from '../components/Button'
+import { useRouter } from 'expo-router'
+import { fetchAuth } from '../../utils/fetchAuth'
+import { useAccountStore } from '../../stores/useAccountStore'
+import { inputStyle } from '../../components/InputText'
+import Button from '../../components/Button'
 
-export default function Update() {
-  const { accounts, updateAccount } = useAccountStore()
-  const { id } = useLocalSearchParams()
+export default function CreateAccount() {
+  const { addAccount } = useAccountStore()
   const router = useRouter()
 
-  const account = accounts.find((item) => item.id === +id)
-
-  const [txtServico, setTxtServico] = useState(account?.service || '')
-  const [txtUsername, setTxtUsername] = useState(account?.username || '')
-  const [txtPass, setTxtPass] = useState(account?.pass || '')
-  const [txtImgUrl, setTxtImgUrl] = useState(account?.logo_image || '')
+  const [txtServico, setTxtServico] = useState('')
+  const [txtUsername, setTxtUsername] = useState('')
+  const [txtPass, setTxtPass] = useState('')
+  const [txtImgUrl, setTxtImgUrl] = useState('')
 
   const handleCreateAccount = async () => {
     const account = {
       service: txtServico,
       username: txtUsername,
       logo_image: txtImgUrl,
-      pass: txtPass,
-      user_id: 1
+      pass: txtPass
     }
 
-    const response = await fetchAuth(`http://localhost:3000/account/${id}`, {
-      method: 'PUT',
+    const response = await fetchAuth('http://localhost:3000/account', {
+      method: 'POST',
       body: JSON.stringify(account)
     })
 
     if (response.ok) {
       const data = await response.json()
-      updateAccount(data.account)
+      addAccount(data.account)
       router.back()
       return
     }
@@ -74,11 +70,11 @@ export default function Update() {
         style={inputStyle.input}
         onChangeText={setTxtImgUrl}
         value={txtImgUrl}
+        keyboardType='url'
         placeholder='...'
         placeholderTextColor='#b8b8b8'
-        keyboardType='url'
       />
-      <Button onPress={handleCreateAccount}>Atualizar</Button>
+      <Button onPress={handleCreateAccount}>Cadastrar</Button>
     </View>
   )
 }
